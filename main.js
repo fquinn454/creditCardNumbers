@@ -89,7 +89,7 @@ function findInvalidCards(batch){
 /** 
 Take an array of invalid card numbers
 Check which company sent out the cards
-Return an array of companies that have sent out invalid cards
+Return an array of unique companies that have sent out invalid cards
 */
 function idInvalidCardCompanies(arr){
     let companyArr = [];
@@ -114,3 +114,9 @@ function idInvalidCardCompanies(arr){
 };
 
 
+//tests
+console.log(validateCred(valid1)); //true
+console.log(validateCred(invalid1)); //false
+console.log(findInvalidCards(batch).length); //8
+console.log(findInvalidCards(batch)); //  [6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 5]
+console.log(idInvalidCardCompanies(findInvalidCards(batch))); // [ 'Visa', 'Mastercard', 'Amex (American Express)', 'Discover' ]
