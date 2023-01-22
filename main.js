@@ -147,7 +147,6 @@ function createValidCard(arr){
     return arr;
 }
 
-
 //tests
 console.log(validateCred(valid1)); // true
 console.log(validateCred(invalid1)); // false
