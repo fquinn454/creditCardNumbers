@@ -77,11 +77,10 @@ Return the numbers of invalid cards
 function findInvalidCards(batch){
     let i = 0;
     let invalidCards = [];
-    while(i < batch.length){
+    for(i=0; i < batch.length; i++){
         if(!validateCred(batch[i])){
             invalidCards.push(batch[i]);
         }
-        i++;
     };
     return invalidCards;
 };
@@ -118,5 +117,5 @@ function idInvalidCardCompanies(arr){
 console.log(validateCred(valid1)); //true
 console.log(validateCred(invalid1)); //false
 console.log(findInvalidCards(batch).length); //8
-console.log(findInvalidCards(batch)); //  [6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 5]
+console.log(findInvalidCards(batch)[3]); //  [6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 5]
 console.log(idInvalidCardCompanies(findInvalidCards(batch))); // [ 'Visa', 'Mastercard', 'Amex (American Express)', 'Discover' ]
