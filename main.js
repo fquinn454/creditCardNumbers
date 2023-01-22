@@ -138,16 +138,23 @@ function validateCredString(str){
 
 }
 
-// Convert invalid card numbers to valid ones
-function createValidCard(arr){
-    newArr = generateLuhnNumber(arr);
-    total = totalOfArray(newArr);
-    remainder = total % 10; 
-    arr[arr.length - 1] = arr[arr.length - 1] - remainder;
-    return arr;
+// Take an invalid credit card number and return a valid one
+function createValidCard(card){
+    let checkDigit = card[card.length - 1];
+    newArr = generateLuhnNumber(card);
+    let total = totalOfArray(newArr) - checkDigit;
+    let newCheckDigit = 0
+    while((total + newCheckDigit) % 10 !== 0){
+        newCheckDigit++;
+    }
+    let outputCard = card;
+    outputCard[outputCard.length - 1] = newCheckDigit;
+    console.log(outputCard);
+    return outputCard;
 }
 
 //tests
+/*
 console.log(validateCred(valid1)); // true
 console.log(validateCred(invalid1)); // false
 console.log(findInvalidCards(batch).length); // 8
@@ -155,4 +162,16 @@ console.log(findInvalidCards(batch)[3]); //  [6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,
 console.log(validateCredString('4024007104695753')); // true
 console.log(idInvalidCardCompanies(findInvalidCards(batch))); // [ 'Visa', 'Mastercard', 'Amex (American Express)', 'Discover' ]
 console.log(validateCred([6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 5])); //false
-console.log(validateCred(createValidCard([6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 6]))); //true
+console.log(createValidCard([6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 5])); //true
+*/
+console.log(validateCred(invalid1)); //false
+console.log(validateCred(createValidCard(invalid1))); // true
+console.log(validateCred(invalid2)); //false
+console.log(validateCred(createValidCard(invalid2))); // true
+console.log(validateCred(invalid3)); //false
+console.log(validateCred(createValidCard(invalid3))); // true
+console.log(validateCred(invalid4)); //false
+console.log(validateCred(createValidCard(invalid4))); // true
+console.log(validateCred(invalid5)); //false
+console.log(validateCred(createValidCard(invalid5))); // true
+
