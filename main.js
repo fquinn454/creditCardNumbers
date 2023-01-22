@@ -35,7 +35,7 @@ function validateCred(arr){
     let total = 0;
     /*
      Starting with the digit (the check digit) 
-     in the far right of the credit card number array (arr) parameter
+     in the far right of the credit card number array parameter
      Iterate to the left, every other digit is doubled (the check digit is not doubled).
      If the number is greater than 9 after doubling, subtract 9 from its value.
      Store this as a newArr
@@ -113,9 +113,23 @@ function idInvalidCardCompanies(arr){
 };
 
 
+// Take a string input and validate card
+function validateCredString(str){
+    let card = [];
+    for(i = 0; i < str.length; i++){
+        card.push(parseInt(str[i]));
+    }
+    return validateCred(card);
+
+}
+
+// Convert invalid card numbers to valid ones
+
+
 //tests
-console.log(validateCred(valid1)); //true
-console.log(validateCred(invalid1)); //false
-console.log(findInvalidCards(batch).length); //8
+console.log(validateCred(valid1)); // true
+console.log(validateCred(invalid1)); // false
+console.log(findInvalidCards(batch).length); // 8
 console.log(findInvalidCards(batch)[3]); //  [6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 5]
+console.log(validateCredString('4024007104695753')); // true
 console.log(idInvalidCardCompanies(findInvalidCards(batch))); // [ 'Visa', 'Mastercard', 'Amex (American Express)', 'Discover' ]
