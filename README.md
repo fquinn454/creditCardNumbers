@@ -8,25 +8,27 @@ Run through terminal with command node main.js
 
 <ul>
     <li>
-        <strong>generateLuhnNumber</strong>
-        <p> Starting with the digit (the check digit) 
-in the far right of the credit card number array parameter
-Iterate to the left, every other digit is doubled (the check digit is not doubled).
-If the number is greater than 9 after doubling, subtract 9 from its value.
-Store this as a newArr</p> 
-    </li>
-    <li>
-        <strong>totalOfArray</strong>
-        <p>Sums the digits in a given number array</p> 
-    </li>
-    <li>
-        <strong>checkRemainder</strong>
-        <p>Checks if total modulo 10 equals zero (valid card)</p> 
-    </li>
-    <li>
         <strong>validateCred</strong>
         <p>Takes a credit card number array and runs generateLuhn Number, totalOfArray and 
         checkRemainder to determine if card is valid</p> 
+        <ul>
+            <li>
+                <strong>generateLuhnNumber</strong>
+                <p> Starting with the digit (the check digit) 
+        in the far right of the credit card number array parameter
+        Iterate to the left, every other digit is doubled (the check digit is not doubled).
+        If the number is greater than 9 after doubling, subtract 9 from its value.
+        Store this as a newArr</p> 
+            </li>
+            <li>
+                <strong>totalOfArray</strong>
+                <p>Sums the digits in a given number array</p> 
+            </li>
+            <li>
+                <strong>checkRemainder</strong>
+                <p>Checks if total modulo 10 equals zero (valid card)</p> 
+            </li>
+        </ul>
     </li>
     <li>
         <strong>findInvalidCards</strong>
