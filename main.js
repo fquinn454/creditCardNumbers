@@ -140,10 +140,13 @@ function validateCredString(str){
 
 // Take an invalid credit card number and return a valid one
 function createValidCard(card){
+    // find the last digit of the array
     let checkDigit = card[card.length - 1];
     newArr = generateLuhnNumber(card);
+    // find the total of the array - checkDigit
     let total = totalOfArray(newArr) - checkDigit;
     let newCheckDigit = 0
+    // Loop through possible values for checkDigit to satisfy valid criteria
     while((total + newCheckDigit) % 10 !== 0){
         newCheckDigit++;
     }
@@ -154,7 +157,6 @@ function createValidCard(card){
 }
 
 //tests
-/*
 console.log(validateCred(valid1)); // true
 console.log(validateCred(invalid1)); // false
 console.log(findInvalidCards(batch).length); // 8
@@ -163,7 +165,6 @@ console.log(validateCredString('4024007104695753')); // true
 console.log(idInvalidCardCompanies(findInvalidCards(batch))); // [ 'Visa', 'Mastercard', 'Amex (American Express)', 'Discover' ]
 console.log(validateCred([6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 5])); //false
 console.log(createValidCard([6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 5])); //true
-*/
 console.log(validateCred(invalid1)); //false
 console.log(validateCred(createValidCard(invalid1))); // true
 console.log(validateCred(invalid2)); //false
