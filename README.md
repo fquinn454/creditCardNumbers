@@ -36,11 +36,6 @@ Run through terminal with command node main.js
         and returns a new array of invalid cards</p> 
     </li>
     <li>
-        <strong>findInvalidCards</strong>
-        <p>Takes a nested number array input, of credit card numbers. Finds the invalid cards
-        and returns a new array of invalid cards</p> 
-    </li>
-    <li>
         <strong>idInvalidCardCompanies</strong>
         <p>Takes a nested number array input, of invalid credit card numbers. Returns an array of
         unique companies sending invalid cards</p> 
