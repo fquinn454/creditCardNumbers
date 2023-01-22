@@ -1,3 +1,5 @@
+// Test Data Below
+
 // All valid credit card numbers
 const valid1 = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8];
 const valid2 = [5, 5, 3, 5, 7, 6, 6, 7, 6, 8, 7, 5, 1, 4, 3, 9];
@@ -25,21 +27,19 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1,
     mystery3, mystery4, mystery5];
 
 
+// Functions to implement Luhn algorithm
 
-// Add your functions below:
+/*
+Starting with the digit (the check digit) 
+in the far right of the credit card number array parameter
+Iterate to the left, every other digit is doubled (the check digit is not doubled).
+If the number is greater than 9 after doubling, subtract 9 from its value.
+Store this as a newArr
+*/
 
-//Implementation of the Luhn algorithm
-function validateCred(arr){
+function generateLuhnNumber(arr){
     let index = arr.length - 1;
     let newArr = [];
-    let total = 0;
-    /*
-     Starting with the digit (the check digit) 
-     in the far right of the credit card number array parameter
-     Iterate to the left, every other digit is doubled (the check digit is not doubled).
-     If the number is greater than 9 after doubling, subtract 9 from its value.
-     Store this as a newArr
-    */
     while(index >= 0){
         newArr.unshift(arr[index]);
         if(arr[index-1]){
@@ -53,12 +53,20 @@ function validateCred(arr){
             }
         index -= 2;
     }
-    // sum the digits in newArr and save in total variable
+    return newArr;
+}
+
+// sum the digits in the new Luhn number array and return total variable
+function totalOfArray(newArr){
+    let total = 0;
     for( i = 0; i < newArr.length; i++){
         total += newArr[i];
     }
-    
-    // check if total % 10 = zero (valid card)
+    return total
+}
+
+// check if total % 10 = zero (valid card)
+function checkRemainder(total){
     if( total % 10 === 0){
         return true;
     }
@@ -67,6 +75,13 @@ function validateCred(arr){
         return false;
     }
 };
+
+// Run the parts of the Luhn algorithm implementation to validate card
+function validateCred(arr){
+    newArr = generateLuhnNumber(arr);
+    total = totalOfArray(newArr);
+    return checkRemainder(total);
+}
 
 /*
 Take an array of credit card numbers
@@ -124,6 +139,13 @@ function validateCredString(str){
 }
 
 // Convert invalid card numbers to valid ones
+function createValidCard(arr){
+    newArr = generateLuhnNumber(arr);
+    total = totalOfArray(newArr);
+    remainder = total % 10; 
+    arr[arr.length - 1] = arr[arr.length - 1] - remainder;
+    return arr;
+}
 
 
 //tests
@@ -133,3 +155,5 @@ console.log(findInvalidCards(batch).length); // 8
 console.log(findInvalidCards(batch)[3]); //  [6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 5]
 console.log(validateCredString('4024007104695753')); // true
 console.log(idInvalidCardCompanies(findInvalidCards(batch))); // [ 'Visa', 'Mastercard', 'Amex (American Express)', 'Discover' ]
+console.log(validateCred([6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 5])); //false
+console.log(validateCred(createValidCard([6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 6]))); //true
