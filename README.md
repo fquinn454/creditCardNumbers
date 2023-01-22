@@ -18,7 +18,7 @@ Run through terminal with command node main.js
         in the far right of the credit card number array parameter
         Iterate to the left, every other digit is doubled (the check digit is not doubled).
         If the number is greater than 9 after doubling, subtract 9 from its value.
-        Store this as a newArr</p> 
+        Returns this as a newArr</p> 
             </li>
             <li>
                 <strong>totalOfArray</strong>
