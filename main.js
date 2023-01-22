@@ -152,7 +152,6 @@ function createValidCard(card){
     }
     let outputCard = card;
     outputCard[outputCard.length - 1] = newCheckDigit;
-    console.log(outputCard);
     return outputCard;
 }
 
@@ -164,7 +163,7 @@ console.log(findInvalidCards(batch)[3]); //  [6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,
 console.log(validateCredString('4024007104695753')); // true
 console.log(idInvalidCardCompanies(findInvalidCards(batch))); // [ 'Visa', 'Mastercard', 'Amex (American Express)', 'Discover' ]
 console.log(validateCred([6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 5])); //false
-console.log(createValidCard([6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 5])); //true
+console.log(validateCred(createValidCard([6, 0, 1, 1, 1, 2,7, 9, 6, 1, 7, 7,7, 9, 3, 5]))); //true
 console.log(validateCred(invalid1)); //false
 console.log(validateCred(createValidCard(invalid1))); // true
 console.log(validateCred(invalid2)); //false
